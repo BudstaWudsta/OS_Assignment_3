@@ -7,6 +7,10 @@ class node:
         self.next = None  # next node in list
         self.next_same = None  # next node of same type as current
         pass
+    
+    def print(self):
+        print(f"Data: {self.data}, Name: {self.name}")
+
 
 
 class tree:
@@ -24,6 +28,7 @@ class tree:
 
         # going down until end
         last = self.head
+        last_same = None
         while (last.next):
             if last.name == name:
                 last_same = last
@@ -31,6 +36,22 @@ class tree:
         
         # sets to next node of same name 
         # so book A to book A
-        last_same.next_same = new_node
+        if last_same is not None:
+            last_same.next_same = new_node
 
         last.next = new_node
+    
+    def print(self):
+        next = self.head
+        while(next):
+            print(f"Data: {next.data}, Name: {next.name}")
+            next = next.next
+
+if __name__ == "__main__":
+    t1 = node(1,"book A")
+    test = tree(t1)
+    test.append(2,"book B")
+    test.append(3,"book A")
+    # test.print()
+    
+    test.head.next_same.print()
