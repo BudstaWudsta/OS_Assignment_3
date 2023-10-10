@@ -1,4 +1,7 @@
-
+import socket
+from _thread import *
+import threading
+import sys
 
 class node:
     def __init__(self, data, name):
@@ -48,10 +51,13 @@ class tree:
             next = next.next
 
 if __name__ == "__main__":
-    t1 = node(1,"book A")
-    test = tree(t1)
-    test.append(2,"book B")
-    test.append(3,"book A")
-    # test.print()
+    # t1 = node(1,"book A")
+    # test = tree(t1)
+    # test.append(2,"book B")
+    # test.append(3,"book A")
+    # # test.print()
     
-    test.head.next_same.print()
+    # test.head.next_same.print() 
+    
+    for line in sys.stdin:
+        print(line)
