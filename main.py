@@ -18,20 +18,23 @@ class node:
 
 
 
-class tree:
-    def __init__(self, head,pattern) -> None:
-        self.head = head
+class Tree:
+    def __init__(self) -> None:
+        
+        self.head = None
         self.name_heads = []
         self.pattern_head = None
         self.depth = 0
-        if pattern in head.data:
-            self.pattern_head = head
-        self.name_heads.append(head)
+
         pass
 
     def append(self, data, name,pattern):
+        # increase depth by 1
         self.depth+=1
+        
         new_node = node(data, name)
+        
+        # set node depth
         new_node.depth = self.depth
 
         # base case
@@ -54,14 +57,28 @@ class tree:
 
         # going down until end
         last = self.head
+        
         last_same = None
         last_pattern = None
+        if last.name == name:
+            last_same = last
+            
+        if pattern in last.data:
+            last_pattern = last
+            
         while (last.next):
+            # print(f"{last.name} {name}")
             if last.name == name:
                 last_same = last
             if pattern in last.data:
                 last_pattern = last
             last = last.next
+        
+        if last.name == name:
+            last_same = last
+            
+        if pattern in last.data:
+            last_pattern = last
         
         # sets to next node of same name 
         # so book A to book A
@@ -93,30 +110,57 @@ class tree:
             print(f"Data: {next.data}, Name: {next.name}, Depth: {next.depth}")
             next = next.pattern_next
 
-def threaded(c):
+def main(c, tree, name,pattern):
+    lines = []
+    
     while True:
  
         # data received from client
         data = c.recv(1024)
-        # assume recieve new data you replace the variabel
-        # so store the data in an array for later
+
         if not data:
-            print('Bye')
-             
-            # lock released on exit
-            # print_lock.release()
+            # print('Disconnected')
+            print(f"{name}")
+            c.send(name.encode())
+            tree.print_pattern()
+            
             break
-        if data:
-            lock.acquire()
+        
+        else:
             
-            print("got somth")
-            # reverse the given string from client
-            data = data[::-1]
-    
-            # send back reversed string to client
-            c.send(data)
+            # removing extra charaacters
+            data = str(data)
+            data = data[2:]
+            data = data[:-1]
+                    
+            # spliting input based on new lines
+            data = data.split('\\n')
+        
+            for d in data:
+                # if d != '':
+                lines.append(d)
+                
+            # print(lines)
             
-            lock.release()
+            while(lines):
+                lock.acquire()
+                                
+                thing = lines.pop(0)
+                # thing += "\n"
+                thing_str = thing
+                # send back data to client
+                thing = thing.encode()
+                                
+                tree.append(thing_str, name, pattern)
+                
+                # try:
+                #     c.send(thing)
+                # except:
+                #     print("send error")
+                
+                lock.release()
+            if lines is None:
+                c.close()
  
         
  
@@ -126,33 +170,41 @@ def threaded(c):
 lock = threading.Lock()
 
 if __name__ == "__main__":
-    pattern = "Hello"
-    t1 = node("Hello world","A")
-    test = tree(t1,pattern)
-    test.append("Hey world","B",pattern)
-    test.append("How are you","A",pattern)
-    test.append("Hello there","A",pattern)
-    # test.print()
-    test.print_name("A")
-    # test.print_pattern()
+    # p = "Hello"
     
-    # test.head.next_same.print() 
+    # tree = Tree()
     
-    exit()
+    # tree.append("Hello world","A",p)
+    # tree.append("Hey world","A",p)
+    # tree.append("Hi world", "B", p)
+    # tree.append("Hello world", "B", p)
+    # tree.append("Hello world","A",p)
+        
+    # tree.print()
+    # tree.print_name("B")
+    # tree.print_pattern()
+    
+    # exit()
+    
+    tree = Tree()
+    
+    connections = 1
     
     host = ""
  
-    # reserve a port on your computer
-    # in our case it is 12345 but it
-    # can be anything
-    port = 12345
+    port = 1234
+    
+    # input here    
+    port = int(sys.argv[2])
+    
+    pattern = sys.argv[4]
+    
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((host, port))
-    print("socket binded to port", port)
+    print("binded to ", port)
  
-    # put the socket into listening mode
     s.listen(5)
-    print("socket is listening")
+    print("listening")
  
     # a forever loop until client wants to exit
     while True:
@@ -164,5 +216,7 @@ if __name__ == "__main__":
         print('Connected to :', addr[0], ':', addr[1])
  
         # Start a new thread and return its identifier
-        start_new_thread(threaded, (c,))
+        name = f"book_{connections:02d}.txt"
+        connections+=1
+        start_new_thread(main, (c,tree,name,pattern))
     s.close()
