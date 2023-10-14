@@ -1,222 +1,118 @@
 import socket
+import select
 from _thread import *
 import threading
 import sys
+import argparse
+from Tree import Tree
 
-class node:
-    def __init__(self, data, name):
-        self.data = data  # data held
-        self.name = name  # book A/B/C
-        self.next = None  # next node in list
-        self.next_same = None  # next node of same type as current
-        self.pattern_next = None 
-        self.depth=0
-        pass
-    
-    def print(self):
-        print(f"Data: {self.data}, Name: {self.name}")
+lock = threading.Lock()
 
 
-
-class Tree:
-    def __init__(self) -> None:
-        
-        self.head = None
-        self.name_heads = []
-        self.pattern_head = None
-        self.depth = 0
-
-        pass
-
-    def append(self, data, name,pattern):
-        # increase depth by 1
-        self.depth+=1
-        
-        new_node = node(data, name)
-        
-        # set node depth
-        new_node.depth = self.depth
-
-        # base case
-        if self.head is None:
-            self.head = new_node
-            self.name_heads.append(new_node)
-            return
-        
-        if self.pattern_head is None:
-            if pattern in data:
-                self.pattern_head = new_node
-        
-        found = False
-        for i in self.name_heads:
-            if i.name == name:
-                found=True
-                break
-        if found==False:
-            self.name_heads.append(new_node)
-
-        # going down until end
-        last = self.head
-        
-        last_same = None
-        last_pattern = None
-        if last.name == name:
-            last_same = last
-            
-        if pattern in last.data:
-            last_pattern = last
-            
-        while (last.next):
-            # print(f"{last.name} {name}")
-            if last.name == name:
-                last_same = last
-            if pattern in last.data:
-                last_pattern = last
-            last = last.next
-        
-        if last.name == name:
-            last_same = last
-            
-        if pattern in last.data:
-            last_pattern = last
-        
-        # sets to next node of same name 
-        # so book A to book A
-        if last_same is not None:
-            last_same.next_same = new_node
-        if last_pattern is not None:
-            last_pattern.pattern_next = new_node
-
-        last.next = new_node
-    
-    def print(self):
-        next = self.head
-        while(next):
-            print(f"Data: {next.data}, Name: {next.name}, Depth: {next.depth}")
-            next = next.next
-            
-    def print_name(self,name):
-        next=None
-        for i in self.name_heads:
-            if i.name == name:
-                next=i
-        while(next):
-            print(f"Data: {next.data}, Name: {next.name}, Depth: {next.depth}")
-            next = next.next_same
-    
-    def print_pattern(self):
-        next = self.pattern_head
-        while(next):
-            print(f"Data: {next.data}, Name: {next.name}, Depth: {next.depth}")
-            next = next.pattern_next
-
-def main(c, tree, name,pattern):
+def handle_client(client_socket, tree, name, pattern):
     lines = []
-    
-    while True:
- 
-        # data received from client
-        data = c.recv(1024)
+    data = ""
 
-        if not data:
-            # print('Disconnected')
-            print(f"{name}")
-            c.send(name.encode())
-            tree.print_pattern()
-            
+    #Why is this name different to the name in the with lines section!??!?!?
+    with lock:
+        print (f"---STARTING THREAD FOR {name}---")
+
+    while True:
+        # data received from client
+        if client_socket._closed:
             break
-        
-        else:
-            
+        # checking if there is still data to be read
+        readable, writable, exceptional = select.select([client_socket], [], [], 1)
+
+        if client_socket in readable:
+            # recieving data
+            data = client_socket.recv(1024)
+
             # removing extra charaacters
             data = str(data)
             data = data[2:]
             data = data[:-1]
-                    
-            # spliting input based on new lines
-            data = data.split('\\n')
-        
-            for d in data:
-                # if d != '':
-                lines.append(d)
-                
-            # print(lines)
-            
-            while(lines):
-                lock.acquire()
-                                
-                thing = lines.pop(0)
-                # thing += "\n"
-                thing_str = thing
-                # send back data to client
-                thing = thing.encode()
-                                
-                tree.append(thing_str, name, pattern)
-                
-                # try:
-                #     c.send(thing)
-                # except:
-                #     print("send error")
-                
-                lock.release()
-            if lines is None:
-                c.close()
- 
-        
- 
-    # connection closed
-    c.close()
 
-lock = threading.Lock()
+            # spliting input based on new lines
+            data = data.split("\\n")
+
+            for d in data:
+                lines.append(d)
+            
+            with lock:
+                while lines:
+                    
+                    line = lines.pop(0)
+                    # print (f"thing: {thing}")
+                    # thing += "\n"
+                    # thing_str = thing
+                    # send back data to client
+                    # thing = thing.encode()
+
+                    print(f"appending {line} : {name}")
+                    tree.append(line, name, pattern)
+
+        else:
+            # connection closed
+            print(f"Closing client: {name}")
+            client_socket.send(name.encode())
+            # tree.print_pattern()
+            client_socket.close()
+            break
+
 
 if __name__ == "__main__":
-    # p = "Hello"
-    
-    # tree = Tree()
-    
-    # tree.append("Hello world","A",p)
-    # tree.append("Hey world","A",p)
-    # tree.append("Hi world", "B", p)
-    # tree.append("Hello world", "B", p)
-    # tree.append("Hello world","A",p)
-        
-    # tree.print()
-    # tree.print_name("B")
-    # tree.print_pattern()
-    
-    # exit()
-    
     tree = Tree()
-    
-    connections = 1
-    
+
+    connections = 0
+
     host = ""
- 
+
     port = 1234
-    
-    # input here    
-    port = int(sys.argv[2])
-    
-    pattern = sys.argv[4]
-    
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.bind((host, port))
-    print("binded to ", port)
- 
-    s.listen(5)
+
+    # Parse arguments
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-l", "--listenport", help="port to listen on", type=int)
+    parser.add_argument("-p", "--pattern", help="pattern to search for", type=str)
+    args = parser.parse_args()
+    print(f"listen: {args.listenport}")
+    print(f"pattern: {args.pattern}")
+    port = args.listenport
+    pattern = args.pattern
+
+    # Create IPv4 TCP socket
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    # Allow instant reconnect (by default, TCP enforces a timeout on reconnect so the socket can't be reused immediately)
+    server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
+    server_socket.bind((host, port))
+    print(f"binded to {host}:{port}")
+
+    server_socket.listen(5)
     print("listening")
- 
+
     # a forever loop until client wants to exit
-    while True:
- 
-        # establish connection with client
-        c, addr = s.accept()
- 
+    while connections < 3:
+        # Blocking function to wait for new connection
+        client_socket, address = server_socket.accept()
+
         # lock acquired by client
-        print('Connected to :', addr[0], ':', addr[1])
- 
+        print("Connected to :", address[0], ":", address[1])
+
         # Start a new thread and return its identifier
-        name = f"book_{connections:02d}.txt"
-        connections+=1
-        start_new_thread(main, (c,tree,name,pattern))
-    s.close()
+        setname = f"book_{connections:02d}.txt"
+        connections += 1
+
+        t = threading.Thread(
+            target=handle_client, args=(client_socket, tree, setname, pattern)
+        )
+        t.start()
+
+    # wait for all threads to finish
+    main_thread = threading.current_thread()
+    for t in threading.enumerate():
+        if t is not main_thread:
+            t.join()
+
+    tree.print()
