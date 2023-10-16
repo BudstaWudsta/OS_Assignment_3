@@ -2,25 +2,25 @@ listen: 1024
 pattern: help
 binded to :1024
 listening
-Connected to : 127.0.0.1 : 45134
-Connected to : 127.0.0.1 : 45140
-Connected to : 127.0.0.1 : 45142
-Connected to : 127.0.0.1 : 45152
-Connected to : 127.0.0.1 : 45164
-Connected to : 127.0.0.1 : 45180
-Connected to : 127.0.0.1 : 45192
+Connected to : 127.0.0.1 : 44908
+Connected to : 127.0.0.1 : 44912
+Connected to : 127.0.0.1 : 44922
+Connected to : 127.0.0.1 : 44930
+Connected to : 127.0.0.1 : 44940
+Connected to : 127.0.0.1 : 44944
+Connected to : 127.0.0.1 : 44956
+Connected to : 127.0.0.1 : 44964
+Connected to : 127.0.0.1 : 44988
 Closing client: book_00.txt
-Closing client: book_01.txt
 Closing client: book_02.txt
 Closing client: book_03.txt
-Closing client: book_05.txt
-Closing client: book_06.txt
+Closing client: book_01.txt
 Closing client: book_04.txt
-Connected to : 127.0.0.1 : 45216
-Connected to : 127.0.0.1 : 45220
-Connected to : 127.0.0.1 : 45200
+Closing client: book_06.txt
 Closing client: book_07.txt
+Closing client: book_05.txt
 Closing client: book_08.txt
+Connected to : 127.0.0.1 : 44972
 Closing client: book_09.txt
 Data: 1a, Name: book_00.txt
 Data: 2a, Name: book_00.txt
@@ -32,196 +32,6 @@ Data: 7a, Name: book_00.txt
 Data: 8a, Name: book_00.txt
 Data: 9a, Name: book_00.txt
 Data: 10a, Name: book_00.txt
-Data: 11a, Name: book_00.txt
-Data: 12a, Name: book_00.txt
-Data: 13a, Name: book_00.txt
-Data: 14a, Name: book_00.txt
-Data: 15a, Name: book_00.txt
-Data: 16a, Name: book_00.txt
-Data: 17a, Name: book_00.txt
-Data: 18a, Name: book_00.txt
-Data: 19a, Name: book_00.txt
-Data: 20a, Name: book_00.txt
-Data: 21a, Name: book_00.txt
-Data: 22a, Name: book_00.txt
-Data: 23a, Name: book_00.txt
-Data: 24a, Name: book_00.txt
-Data: 25a, Name: book_00.txt
-Data: 26a, Name: book_00.txt
-Data: 27a, Name: book_00.txt
-Data: 28a, Name: book_00.txt
-Data: 29a, Name: book_00.txt
-Data: 30a, Name: book_00.txt
-Data: 31a, Name: book_00.txt
-Data: 32a, Name: book_00.txt
-Data: 33a, Name: book_00.txt
-Data: 34a, Name: book_00.txt
-Data: 35a, Name: book_00.txt
-Data: 36a, Name: book_00.txt
-Data: 37a, Name: book_00.txt
-Data: 38a, Name: book_00.txt
-Data: 39a, Name: book_00.txt
-Data: 40a, Name: book_00.txt
-Data: 41a, Name: book_00.txt
-Data: 42a, Name: book_00.txt
-Data: 43a, Name: book_00.txt
-Data: 44a, Name: book_00.txt
-Data: 45a, Name: book_00.txt
-Data: 46a, Name: book_00.txt
-Data: 47a, Name: book_00.txt
-Data: 48a, Name: book_00.txt
-Data: 49a, Name: book_00.txt
-Data: 50a, Name: book_00.txt
-Data: 51a, Name: book_00.txt
-Data: 52a, Name: book_00.txt
-Data: 53a, Name: book_00.txt
-Data: 54a, Name: book_00.txt
-Data: 55a, Name: book_00.txt
-Data: 56a, Name: book_00.txt
-Data: 57a, Name: book_00.txt
-Data: 58a, Name: book_00.txt
-Data: 59a, Name: book_00.txt
-Data: 60a, Name: book_00.txt
-Data: 61a, Name: book_00.txt
-Data: 62a, Name: book_00.txt
-Data: 63a, Name: book_00.txt
-Data: 64a, Name: book_00.txt
-Data: 65a, Name: book_00.txt
-Data: 66a, Name: book_00.txt
-Data: 67a, Name: book_00.txt
-Data: 68a, Name: book_00.txt
-Data: 69a, Name: book_00.txt
-Data: 70a, Name: book_00.txt
-Data: 71a, Name: book_00.txt
-Data: 72a, Name: book_00.txt
-Data: 73a, Name: book_00.txt
-Data: 74a, Name: book_00.txt
-Data: 75a, Name: book_00.txt
-Data: 76a, Name: book_00.txt
-Data: 77a, Name: book_00.txt
-Data: 78a, Name: book_00.txt
-Data: 79a, Name: book_00.txt
-Data: 80a, Name: book_00.txt
-Data: 81a, Name: book_00.txt
-Data: 82a, Name: book_00.txt
-Data: 83a, Name: book_00.txt
-Data: 84a, Name: book_00.txt
-Data: 85a, Name: book_00.txt
-Data: 86a, Name: book_00.txt
-Data: 87a, Name: book_00.txt
-Data: 88a, Name: book_00.txt
-Data: 89a, Name: book_00.txt
-Data: 90a, Name: book_00.txt
-Data: 91a, Name: book_00.txt
-Data: 92a, Name: book_00.txt
-Data: 93a, Name: book_00.txt
-Data: 94a, Name: book_00.txt
-Data: 95a, Name: book_00.txt
-Data: 96a, Name: book_00.txt
-Data: 97a, Name: book_00.txt
-Data: 98a, Name: book_00.txt
-Data: 99a, Name: book_00.txt
-Data: 100a, Name: book_00.txt
-Data: 1a, Name: book_01.txt
-Data: 2a, Name: book_01.txt
-Data: 3a, Name: book_01.txt
-Data: 4a, Name: book_01.txt
-Data: 5a, Name: book_01.txt
-Data: 6a, Name: book_01.txt
-Data: 7a, Name: book_01.txt
-Data: 8a, Name: book_01.txt
-Data: 9a, Name: book_01.txt
-Data: 10a, Name: book_01.txt
-Data: 11a, Name: book_01.txt
-Data: 12a, Name: book_01.txt
-Data: 13a, Name: book_01.txt
-Data: 14a, Name: book_01.txt
-Data: 15a, Name: book_01.txt
-Data: 16a, Name: book_01.txt
-Data: 17a, Name: book_01.txt
-Data: 18a, Name: book_01.txt
-Data: 19a, Name: book_01.txt
-Data: 20a, Name: book_01.txt
-Data: 21a, Name: book_01.txt
-Data: 22a, Name: book_01.txt
-Data: 23a, Name: book_01.txt
-Data: 24a, Name: book_01.txt
-Data: 25a, Name: book_01.txt
-Data: 26a, Name: book_01.txt
-Data: 27a, Name: book_01.txt
-Data: 28a, Name: book_01.txt
-Data: 29a, Name: book_01.txt
-Data: 30a, Name: book_01.txt
-Data: 31a, Name: book_01.txt
-Data: 32a, Name: book_01.txt
-Data: 33a, Name: book_01.txt
-Data: 34a, Name: book_01.txt
-Data: 35a, Name: book_01.txt
-Data: 36a, Name: book_01.txt
-Data: 37a, Name: book_01.txt
-Data: 38a, Name: book_01.txt
-Data: 39a, Name: book_01.txt
-Data: 40a, Name: book_01.txt
-Data: 41a, Name: book_01.txt
-Data: 42a, Name: book_01.txt
-Data: 43a, Name: book_01.txt
-Data: 44a, Name: book_01.txt
-Data: 45a, Name: book_01.txt
-Data: 46a, Name: book_01.txt
-Data: 47a, Name: book_01.txt
-Data: 48a, Name: book_01.txt
-Data: 49a, Name: book_01.txt
-Data: 50a, Name: book_01.txt
-Data: 51a, Name: book_01.txt
-Data: 52a, Name: book_01.txt
-Data: 53a, Name: book_01.txt
-Data: 54a, Name: book_01.txt
-Data: 55a, Name: book_01.txt
-Data: 56a, Name: book_01.txt
-Data: 57a, Name: book_01.txt
-Data: 58a, Name: book_01.txt
-Data: 59a, Name: book_01.txt
-Data: 60a, Name: book_01.txt
-Data: 61a, Name: book_01.txt
-Data: 62a, Name: book_01.txt
-Data: 63a, Name: book_01.txt
-Data: 64a, Name: book_01.txt
-Data: 65a, Name: book_01.txt
-Data: 66a, Name: book_01.txt
-Data: 67a, Name: book_01.txt
-Data: 68a, Name: book_01.txt
-Data: 69a, Name: book_01.txt
-Data: 70a, Name: book_01.txt
-Data: 71a, Name: book_01.txt
-Data: 72a, Name: book_01.txt
-Data: 73a, Name: book_01.txt
-Data: 74a, Name: book_01.txt
-Data: 75a, Name: book_01.txt
-Data: 76a, Name: book_01.txt
-Data: 77a, Name: book_01.txt
-Data: 78a, Name: book_01.txt
-Data: 79a, Name: book_01.txt
-Data: 80a, Name: book_01.txt
-Data: 81a, Name: book_01.txt
-Data: 82a, Name: book_01.txt
-Data: 83a, Name: book_01.txt
-Data: 84a, Name: book_01.txt
-Data: 85a, Name: book_01.txt
-Data: 86a, Name: book_01.txt
-Data: 87a, Name: book_01.txt
-Data: 88a, Name: book_01.txt
-Data: 89a, Name: book_01.txt
-Data: 90a, Name: book_01.txt
-Data: 91a, Name: book_01.txt
-Data: 92a, Name: book_01.txt
-Data: 93a, Name: book_01.txt
-Data: 94a, Name: book_01.txt
-Data: 95a, Name: book_01.txt
-Data: 96a, Name: book_01.txt
-Data: 97a, Name: book_01.txt
-Data: 98a, Name: book_01.txt
-Data: 99a, Name: book_01.txt
-Data: 100a, Name: book_01.txt
 Data: 1a, Name: book_02.txt
 Data: 2a, Name: book_02.txt
 Data: 3a, Name: book_02.txt
@@ -232,96 +42,16 @@ Data: 7a, Name: book_02.txt
 Data: 8a, Name: book_02.txt
 Data: 9a, Name: book_02.txt
 Data: 10a, Name: book_02.txt
-Data: 11a, Name: book_02.txt
-Data: 12a, Name: book_02.txt
-Data: 13a, Name: book_02.txt
-Data: 14a, Name: book_02.txt
-Data: 15a, Name: book_02.txt
-Data: 16a, Name: book_02.txt
-Data: 17a, Name: book_02.txt
-Data: 18a, Name: book_02.txt
-Data: 19a, Name: book_02.txt
-Data: 20a, Name: book_02.txt
-Data: 21a, Name: book_02.txt
-Data: 22a, Name: book_02.txt
-Data: 23a, Name: book_02.txt
-Data: 24a, Name: book_02.txt
-Data: 25a, Name: book_02.txt
-Data: 26a, Name: book_02.txt
-Data: 27a, Name: book_02.txt
-Data: 28a, Name: book_02.txt
-Data: 29a, Name: book_02.txt
-Data: 30a, Name: book_02.txt
-Data: 31a, Name: book_02.txt
-Data: 32a, Name: book_02.txt
-Data: 33a, Name: book_02.txt
-Data: 34a, Name: book_02.txt
-Data: 35a, Name: book_02.txt
-Data: 36a, Name: book_02.txt
-Data: 37a, Name: book_02.txt
-Data: 38a, Name: book_02.txt
-Data: 39a, Name: book_02.txt
-Data: 40a, Name: book_02.txt
-Data: 41a, Name: book_02.txt
-Data: 42a, Name: book_02.txt
-Data: 43a, Name: book_02.txt
-Data: 44a, Name: book_02.txt
-Data: 45a, Name: book_02.txt
-Data: 46a, Name: book_02.txt
-Data: 47a, Name: book_02.txt
-Data: 48a, Name: book_02.txt
-Data: 49a, Name: book_02.txt
-Data: 50a, Name: book_02.txt
-Data: 51a, Name: book_02.txt
-Data: 52a, Name: book_02.txt
-Data: 53a, Name: book_02.txt
-Data: 54a, Name: book_02.txt
-Data: 55a, Name: book_02.txt
-Data: 56a, Name: book_02.txt
-Data: 57a, Name: book_02.txt
-Data: 58a, Name: book_02.txt
-Data: 59a, Name: book_02.txt
-Data: 60a, Name: book_02.txt
-Data: 61a, Name: book_02.txt
-Data: 62a, Name: book_02.txt
-Data: 63a, Name: book_02.txt
-Data: 64a, Name: book_02.txt
-Data: 65a, Name: book_02.txt
-Data: 66a, Name: book_02.txt
-Data: 67a, Name: book_02.txt
-Data: 68a, Name: book_02.txt
-Data: 69a, Name: book_02.txt
-Data: 70a, Name: book_02.txt
-Data: 71a, Name: book_02.txt
-Data: 72a, Name: book_02.txt
-Data: 73a, Name: book_02.txt
-Data: 74a, Name: book_02.txt
-Data: 75a, Name: book_02.txt
-Data: 76a, Name: book_02.txt
-Data: 77a, Name: book_02.txt
-Data: 78a, Name: book_02.txt
-Data: 79a, Name: book_02.txt
-Data: 80a, Name: book_02.txt
-Data: 81a, Name: book_02.txt
-Data: 82a, Name: book_02.txt
-Data: 83a, Name: book_02.txt
-Data: 84a, Name: book_02.txt
-Data: 85a, Name: book_02.txt
-Data: 86a, Name: book_02.txt
-Data: 87a, Name: book_02.txt
-Data: 88a, Name: book_02.txt
-Data: 89a, Name: book_02.txt
-Data: 90a, Name: book_02.txt
-Data: 91a, Name: book_02.txt
-Data: 92a, Name: book_02.txt
-Data: 93a, Name: book_02.txt
-Data: 94a, Name: book_02.txt
-Data: 95a, Name: book_02.txt
-Data: 96a, Name: book_02.txt
-Data: 97a, Name: book_02.txt
-Data: 98a, Name: book_02.txt
-Data: 99a, Name: book_02.txt
-Data: 100a, Name: book_02.txt
+Data: 1a, Name: book_01.txt
+Data: 2a, Name: book_01.txt
+Data: 3a, Name: book_01.txt
+Data: 4a, Name: book_01.txt
+Data: 5a, Name: book_01.txt
+Data: 6a, Name: book_01.txt
+Data: 7a, Name: book_01.txt
+Data: 8a, Name: book_01.txt
+Data: 9a, Name: book_01.txt
+Data: 10a, Name: book_01.txt
 Data: 1b, Name: book_03.txt
 Data: 2b, Name: book_03.txt
 Data: 3b, Name: book_03.txt
@@ -332,26 +62,6 @@ Data: 7b, Name: book_03.txt
 Data: 8b, Name: book_03.txt
 Data: 9b, Name: book_03.txt
 Data: 10b, Name: book_03.txt
-Data: 1b, Name: book_05.txt
-Data: 2b, Name: book_05.txt
-Data: 3b, Name: book_05.txt
-Data: 4b, Name: book_05.txt
-Data: 5b, Name: book_05.txt
-Data: 6b, Name: book_05.txt
-Data: 7b, Name: book_05.txt
-Data: 8b, Name: book_05.txt
-Data: 9b, Name: book_05.txt
-Data: 10b, Name: book_05.txt
-Data: 1c, Name: book_06.txt
-Data: 2c, Name: book_06.txt
-Data: 3c, Name: book_06.txt
-Data: 4c, Name: book_06.txt
-Data: 5c, Name: book_06.txt
-Data: 6c, Name: book_06.txt
-Data: 7c, Name: book_06.txt
-Data: 8c, Name: book_06.txt
-Data: 9c, Name: book_06.txt
-Data: 10c, Name: book_06.txt
 Data: 1b, Name: book_04.txt
 Data: 2b, Name: book_04.txt
 Data: 3b, Name: book_04.txt
@@ -362,6 +72,16 @@ Data: 7b, Name: book_04.txt
 Data: 8b, Name: book_04.txt
 Data: 9b, Name: book_04.txt
 Data: 10b, Name: book_04.txt
+Data: 1c, Name: book_06.txt
+Data: 2c, Name: book_06.txt
+Data: 3c, Name: book_06.txt
+Data: 4c, Name: book_06.txt
+Data: 5c, Name: book_06.txt
+Data: 6c, Name: book_06.txt
+Data: 7c, Name: book_06.txt
+Data: 8c, Name: book_06.txt
+Data: 9c, Name: book_06.txt
+Data: 10c, Name: book_06.txt
 Data: 1c, Name: book_07.txt
 Data: 2c, Name: book_07.txt
 Data: 3c, Name: book_07.txt
@@ -372,6 +92,16 @@ Data: 7c, Name: book_07.txt
 Data: 8c, Name: book_07.txt
 Data: 9c, Name: book_07.txt
 Data: 10c, Name: book_07.txt
+Data: 1b, Name: book_05.txt
+Data: 2b, Name: book_05.txt
+Data: 3b, Name: book_05.txt
+Data: 4b, Name: book_05.txt
+Data: 5b, Name: book_05.txt
+Data: 6b, Name: book_05.txt
+Data: 7b, Name: book_05.txt
+Data: 8b, Name: book_05.txt
+Data: 9b, Name: book_05.txt
+Data: 10b, Name: book_05.txt
 Data: 1c, Name: book_08.txt
 Data: 2c, Name: book_08.txt
 Data: 3c, Name: book_08.txt
