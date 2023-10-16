@@ -1,5 +1,6 @@
 from Node import Node
 
+
 class Tree:
     def __init__(self) -> None:
         self.head = None
@@ -26,12 +27,16 @@ class Tree:
         # If this is the first node with this name, add it to the name_heads list
         if not any(node.name == name for node in self.name_heads):
             self.name_heads.append(new_node)
-            
+
         # going down until end
         last = self.head
 
+        # last node with the same name
         last_same = None
+
+        # last node with the same pattern
         last_pattern = None
+        
         if last.name == name:
             last_same = last
 
@@ -67,7 +72,7 @@ class Tree:
         while next_node:
             print(f"Data: {next_node.data}, Name: {next_node.name}")
             next_node = next.next
-    
+
     # Print the whole tree of a specific book name, in order
     def print_name(self, name):
         next_node = next((node for node in self.name_heads if node.name == name), None)

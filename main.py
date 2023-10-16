@@ -18,7 +18,7 @@ def handle_client(client_socket, tree, name, pattern):
         if client_socket._closed:
             break
         # checking if there is still data to be read
-        readable, writable, exceptional = select.select([client_socket], [], [], 1)
+        readable, _, _ = select.select([client_socket], [], [], 1)
 
         if client_socket in readable:
             # recieving data
@@ -39,19 +39,11 @@ def handle_client(client_socket, tree, name, pattern):
             while lines:
                 with lock:
                     line = lines.pop(0)
-                    # print (f"thing: {thing}")
-                    # thing += "\n"
-                    # thing_str = thing
-                    # send back data to client
-                    # thing = thing.encode()
-
                     tree.append(line, name, pattern)
 
         else:
             # connection closed
             print(f"Closing client: {name}")
-            # client_socket.send(name.encode())
-            # tree.print_pattern()
             client_socket.close()
             break
 
@@ -110,4 +102,4 @@ if __name__ == "__main__":
         if t is not main_thread:
             t.join()
 
-    tree.print_name("book_01.txt")
+    tree.print_pattern()
