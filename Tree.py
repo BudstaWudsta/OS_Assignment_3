@@ -61,7 +61,7 @@ class Tree:
 
         while next_node:
             print(f"Data: {next_node.data}, Name: {next_node.name}")
-            next_node = next.next
+            next_node = next_node.next
 
     # Print the whole tree of a specific book name, in order
     def print_name(self, name):

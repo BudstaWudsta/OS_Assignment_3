@@ -80,7 +80,7 @@ if __name__ == "__main__":
     print("listening")
 
     # a forever loop until client wants to exit
-    while connections < 3:
+    while connections < 10:
         # Blocking function to wait for new connection
         client_socket, address = server_socket.accept()
 
@@ -102,4 +102,4 @@ if __name__ == "__main__":
         if t is not main_thread:
             t.join()
 
-    tree.print_pattern()
+    tree.print()
