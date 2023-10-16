@@ -1,0 +1,1 @@
+nc localhost 1024 < test_data/frankenstein.txt & nc localhost 1024 < test_data/romeojuliet.txt & nc localhost 1024 < test_data/queenofspades.txt

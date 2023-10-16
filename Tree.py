@@ -4,6 +4,7 @@ from Node import Node
 class Tree:
     def __init__(self) -> None:
         self.head = None
+        self.tail = None
         self.name_heads = []
         self.pattern_head = None
         self.depth = 0
@@ -16,45 +17,33 @@ class Tree:
         # base case
         if self.head is None:
             self.head = new_node
+            self.tail = new_node
             self.name_heads.append(new_node)
             return
 
         # if pattern head is none, set it to the first node with the pattern
-        if self.pattern_head is None:
-            if pattern in data:
-                self.pattern_head = new_node
+        if pattern in data and self.pattern_head is None:
+            self.pattern_head = new_node
 
         # If this is the first node with this name, add it to the name_heads list
         if not any(node.name == name for node in self.name_heads):
             self.name_heads.append(new_node)
-
-        # going down until end
-        last = self.head
 
         # last node with the same name
         last_same = None
 
         # last node with the same pattern
         last_pattern = None
-        
-        if last.name == name:
-            last_same = last
 
-        if pattern in last.data:
-            last_pattern = last
+        # going down until end
+        current = self.head
 
-        while last.next:
-            if last.name == name:
-                last_same = last
-            if pattern in last.data:
-                last_pattern = last
-            last = last.next
-
-        if last.name == name:
-            last_same = last
-
-        if pattern in last.data:
-            last_pattern = last
+        while current:
+            if current.name == name:
+                last_same = current
+            if pattern in current.data:
+                last_pattern = current
+            current = current.next
 
         # sets to next node of same name
         # so book A to book A
@@ -63,7 +52,8 @@ class Tree:
         if last_pattern is not None:
             last_pattern.next_frequent_search = new_node
 
-        last.next = new_node
+        self.tail.next = new_node
+        self.tail = new_node
 
     # Print the whole tree, in order
     def print(self):

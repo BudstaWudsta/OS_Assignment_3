@@ -2,9 +2,9 @@ listen: 1024
 pattern: help
 binded to :1024
 listening
-Connected to : 127.0.0.1 : 39580
-Connected to : 127.0.0.1 : 39584
-Connected to : 127.0.0.1 : 39594
+Connected to : 127.0.0.1 : 46876
+Connected to : 127.0.0.1 : 46878
+Connected to : 127.0.0.1 : 46898
 Closing client: book_02.txt
 Closing client: book_01.txt
 Closing client: book_00.txt
@@ -12,26 +12,26 @@ Data: better\xe2\x80\x94their child, the innocent and helpless creature bestowed
 Data: Where\xe2\x80\x99s Potpan, that he helps not to take away?, Name: book_01.txt
 Data: His help to crave and my dear hap to tell., Name: book_01.txt
 Data: Within thy help and holy physic lies., Name: book_01.txt
-Data: It helps not, it prevails not, talk no more., Name: book_01.txt
 Data: night. I was a poor, helpless, miserable wretch; I knew, and could, Name: book_00.txt
+Data: It helps not, it prevails not, talk no more., Name: book_01.txt
+Data: load of wood. The girl met him at the door, helped to relieve him of, Name: book_00.txt
 Data: Come weep with me, past hope, past cure, past help!, Name: book_01.txt
 Data: If in thy wisdom, thou canst give no help,, Name: book_01.txt
 Data: And with this knife I\xe2\x80\x99ll help it presently., Name: book_01.txt
-Data: load of wood. The girl met him at the door, helped to relieve him of, Name: book_00.txt
 Data: Love give me strength, and strength shall help afford., Name: book_01.txt
 Data: To help me sort such needful ornaments, Name: book_01.txt
 Data: Go thou to Juliet, help to deck up her., Name: book_01.txt
 Data: What, are you busy, ho? Need you my help?, Name: book_01.txt
 Data: Alas, alas! Help, help! My lady\xe2\x80\x99s dead!, Name: book_01.txt
 Data: Help, help! Call help., Name: book_01.txt
-Data:       With speedy help doth lend redress.\xe2\x80\x99, Name: book_01.txt
 Data: youth could not help owning to his own mind that the captive possessed, Name: book_00.txt
+Data:       With speedy help doth lend redress.\xe2\x80\x99, Name: book_01.txt
+Data: beings of a superior nature, but I was wretched, helpless, and alone., Name: book_00.txt
 Data: To help me after? I will kiss thy lips., Name: book_01.txt
 Data: To help to take her from her borrow\xe2\x80\x99d grave,, Name: book_01.txt
-Data: beings of a superior nature, but I was wretched, helpless, and alone., Name: book_00.txt
 Data: agreement and help preserve free future access to Project Gutenberg\xe2\x84\xa2, Name: book_01.txt
-Data: orts and donations can help, see, Name: book_01.txt
 Data: cottage, I could not help believing that I had been too hasty in my, Name: book_00.txt
+Data: orts and donations can help, see, Name: book_01.txt
 Data: Archive Foundation, how to help produce our new eBooks, and how to, Name: book_01.txt
 Data: of helplessness, so often felt in frightful dreams, when you in vain, Name: book_00.txt
 Data: and several other persons, to the inn. I could not help being struck by the, Name: book_00.txt
