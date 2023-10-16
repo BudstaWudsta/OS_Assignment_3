@@ -110,4 +110,4 @@ if __name__ == "__main__":
         if t is not main_thread:
             t.join()
 
-    tree.print()
+    tree.print_name("book_01.txt")

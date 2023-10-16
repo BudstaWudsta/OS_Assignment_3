@@ -7,9 +7,9 @@ class Tree:
         self.pattern_head = None
         self.depth = 0
 
+    # Append a new node to the tree
     def append(self, data, name, pattern):
         self.depth += 1
-        print(f"creating new node with name {name}, {data}")
         new_node = Node(data, name)
 
         # base case
@@ -18,18 +18,15 @@ class Tree:
             self.name_heads.append(new_node)
             return
 
+        # if pattern head is none, set it to the first node with the pattern
         if self.pattern_head is None:
             if pattern in data:
                 self.pattern_head = new_node
 
-        found = False
-        for i in self.name_heads:
-            if i.name == name:
-                found = True
-                break
-        if found == False:
+        # If this is the first node with this name, add it to the name_heads list
+        if not any(node.name == name for node in self.name_heads):
             self.name_heads.append(new_node)
-
+            
         # going down until end
         last = self.head
 
@@ -63,24 +60,25 @@ class Tree:
 
         last.next = new_node
 
+    # Print the whole tree, in order
     def print(self):
-        next = self.head
-        print (f"depth {self.depth}")
-        while next:
-            print(f"Data: {next.data}, Name: {next.name}")
-            next = next.next
+        next_node = self.head
 
+        while next_node:
+            print(f"Data: {next_node.data}, Name: {next_node.name}")
+            next_node = next.next
+    
+    # Print the whole tree of a specific book name, in order
     def print_name(self, name):
-        next = None
-        for i in self.name_heads:
-            if i.name == name:
-                next = i
-        while next:
-            print(f"Data: {next.data}, Name: {next.name}")
-            next = next.next_same
+        next_node = next((node for node in self.name_heads if node.name == name), None)
+
+        while next_node:
+            print(f"Data: {next_node.data}, Name: {next_node.name}")
+            next_node = next_node.book_next
 
     def print_pattern(self):
-        next = self.pattern_head
-        while next:
-            print(f"Data: {next.data}, Name: {next.name}")
-            next = next.next_frequent_search
+        next_node = self.pattern_head
+
+        while next_node:
+            print(f"Data: {next_node.data}, Name: {next_node.name}")
+            next_node = next_node.next_frequent_search
