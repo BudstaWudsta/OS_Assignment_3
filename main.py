@@ -13,10 +13,6 @@ def handle_client(client_socket, tree, name, pattern):
     lines = []
     data = ""
 
-    #Why is this name different to the name in the with lines section!??!?!?
-    with lock:
-        print (f"---STARTING THREAD FOR {name}---")
-
     while True:
         # data received from client
         if client_socket._closed:
@@ -38,10 +34,10 @@ def handle_client(client_socket, tree, name, pattern):
 
             for d in data:
                 lines.append(d)
+
             
-            with lock:
-                while lines:
-                    
+            while lines:
+                with lock:
                     line = lines.pop(0)
                     # print (f"thing: {thing}")
                     # thing += "\n"
@@ -49,13 +45,12 @@ def handle_client(client_socket, tree, name, pattern):
                     # send back data to client
                     # thing = thing.encode()
 
-                    print(f"appending {line} : {name}")
                     tree.append(line, name, pattern)
 
         else:
             # connection closed
             print(f"Closing client: {name}")
-            client_socket.send(name.encode())
+            # client_socket.send(name.encode())
             # tree.print_pattern()
             client_socket.close()
             break
