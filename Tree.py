@@ -8,6 +8,9 @@ class Tree:
         self.name_heads = []
         self.pattern_head = None
         self.depth = 0
+        self.frequency = []
+        self.most_freq_count = 0
+        self.most_freq_name = None
 
     # Append a new node to the tree
     def append(self, data, name, pattern):
@@ -19,6 +22,7 @@ class Tree:
             self.head = new_node
             self.tail = new_node
             self.name_heads.append(new_node)
+            print(f"Added node of {name}")
             return
 
         # if pattern head is none, set it to the first node with the pattern
@@ -28,6 +32,7 @@ class Tree:
         # If this is the first node with this name, add it to the name_heads list
         if not any(node.name == name for node in self.name_heads):
             self.name_heads.append(new_node)
+            self.frequency.append(0)
 
         # last node with the same name
         last_same = None
@@ -51,9 +56,13 @@ class Tree:
             last_same.book_next = new_node
         if last_pattern is not None:
             last_pattern.next_frequent_search = new_node
+            
 
         self.tail.next = new_node
         self.tail = new_node
+        
+        print(f"Added node of {name}")
+
 
     # Print the whole tree, in order
     def print(self):

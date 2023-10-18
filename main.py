@@ -5,9 +5,34 @@ import threading
 import sys
 import argparse
 from Tree import Tree
+import time
 
 lock = threading.Lock()
 
+def analysis(tree):      
+    while (tree.pattern_head is None):
+        continue
+    
+    next = tree.pattern_head
+    
+    while(True):
+        tree.frequency[next.book_num-1] += 1
+        
+        if tree.frequency[next.book_num-1] > tree.most_freq_count:
+            tree.most_freq_count = tree.frequency[next.book_num-1]
+            tree.most_freq_name = next.name
+        
+        while next.next_frequent_search is None:
+            continue
+        
+        next = next.next_frequent_search
+    return
+
+def interval_write(tree,interval):
+    while(True):
+        time.sleep(interval)
+        print(f"Most Freq: {tree.most_freq_name}")
+    return
 
 def handle_client(client_socket, tree, name, pattern):
     lines = []
@@ -50,6 +75,9 @@ def handle_client(client_socket, tree, name, pattern):
 
 if __name__ == "__main__":
     tree = Tree()
+    
+    threading.Thread(target=analysis,args=tree).start()
+    threading.Thread(target=interval_write,args=(tree,5)).start()
 
     connections = 0
 
