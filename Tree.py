@@ -81,7 +81,11 @@ class Tree:
         file_path = f"{name}.txt"
         with open(file_path, "w") as file:
             while current:
-                file.write(str(current.data) + "\n")
+                # only add newline if there are more lines after this
+                if current.book_next is not None:
+                    file.write(str(current.data) + "\n")
+                else:
+                    file.write(str(current.data))
                 current = current.book_next
 
     # Print all lines of a with a particular pattern
