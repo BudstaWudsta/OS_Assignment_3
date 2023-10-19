@@ -65,12 +65,16 @@ class Tree:
 
     # Print the whole tree of a specific book name, in order
     def print_name(self, name):
-        next_node = next((node for node in self.name_heads if node.name == name), None)
+        if not name in self.name_heads:
+            return
+        
+        next_node = self.name_heads[name]
 
         while next_node:
             print(f"Data: {next_node.data}, Name: {next_node.name}")
             next_node = next_node.book_next
 
+    # Print all lines of a book to file {name}.txt
     def write_book_to_file(self, name):
         current = self.name_heads[name]
         file_path = f"{name}.txt"

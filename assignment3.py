@@ -82,7 +82,7 @@ if __name__ == "__main__":
     print("listening")
 
     # a forever loop until client wants to exit
-    while connections < 10:
+    while True:
         # Blocking function to wait for new connection
         client_socket, address = server_socket.accept()
 
