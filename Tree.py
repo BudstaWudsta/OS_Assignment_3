@@ -77,6 +77,9 @@ class Tree:
 
     # Write all lines of a book to file {name}.txt
     def write_book_to_file(self, name):
+        if not name in self.name_heads:
+            return
+        
         current = self.name_heads[name]
         file_path = f"{name}.txt"
         with open(file_path, "w") as file:

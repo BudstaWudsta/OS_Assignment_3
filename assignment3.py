@@ -46,8 +46,8 @@ def handle_client(client_socket, tree, name, pattern):
             created_before = True
 
         else:
-            if not created_before:
-                tree.append("", name, pattern)
+            #if not created_before:
+                #tree.append("", name, pattern)
 
             client_socket.close()
             break
