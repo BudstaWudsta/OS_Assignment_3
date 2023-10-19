@@ -90,7 +90,7 @@ if __name__ == "__main__":
         # print("Connected to :", address[0], ":", address[1])
 
         # Start a new thread and return its identifier
-        setname = f"book_{connections:02d}"
+        setname = f"book_{connections+1:02d}"
         connections += 1
 
         t = threading.Thread(
