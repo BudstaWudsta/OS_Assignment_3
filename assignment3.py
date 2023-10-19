@@ -35,7 +35,6 @@ def handle_client(client_socket, tree, name, pattern):
             for d in data:
                 lines.append(d)
 
-            
             while lines:
                 with lock:
                     line = lines.pop(0)
@@ -46,6 +45,9 @@ def handle_client(client_socket, tree, name, pattern):
             print(f"Closing client: {name}")
             client_socket.close()
             break
+
+    # Finished reading in data, now can write to file 
+    tree.write_book_to_file(name)
 
 
 if __name__ == "__main__":
@@ -88,7 +90,7 @@ if __name__ == "__main__":
         print("Connected to :", address[0], ":", address[1])
 
         # Start a new thread and return its identifier
-        setname = f"book_{connections:02d}.txt"
+        setname = f"book_{connections:02d}"
         connections += 1
 
         t = threading.Thread(

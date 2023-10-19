@@ -5,7 +5,7 @@ class Tree:
     def __init__(self) -> None:
         self.head = None
         self.tail = None
-        self.name_heads = []
+        self.name_heads = {}
         self.pattern_head = None
         self.depth = 0
 
@@ -18,7 +18,7 @@ class Tree:
         if self.head is None:
             self.head = new_node
             self.tail = new_node
-            self.name_heads.append(new_node)
+            self.name_heads[name] = new_node
             return
 
         # if pattern head is none, set it to the first node with the pattern
@@ -26,8 +26,8 @@ class Tree:
             self.pattern_head = new_node
 
         # If this is the first node with this name, add it to the name_heads list
-        if not any(node.name == name for node in self.name_heads):
-            self.name_heads.append(new_node)
+        if not name in self.name_heads:
+            self.name_heads[name] = new_node
 
         # last node with the same name
         last_same = None
@@ -70,6 +70,14 @@ class Tree:
         while next_node:
             print(f"Data: {next_node.data}, Name: {next_node.name}")
             next_node = next_node.book_next
+
+    def write_book_to_file(self, name):
+        current = self.name_heads[name]
+        file_path = f"{name}.txt"
+        with open(file_path, "w") as file:
+            while current:
+                file.write(str(current.data) + "\n")
+                current = current.book_next
 
     def print_pattern(self):
         next_node = self.pattern_head
