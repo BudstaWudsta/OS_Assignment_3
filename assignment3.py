@@ -73,7 +73,7 @@ if __name__ == "__main__":
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     # Allow instant reconnect (by default, TCP enforces a timeout on reconnect so the socket can't be reused immediately)
-    server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 0)
 
     server_socket.bind((host, port))
     # print(f"binded to {host}:{port}")
