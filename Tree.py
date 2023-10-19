@@ -54,6 +54,7 @@ class Tree:
 
         self.tail.next = new_node
         self.tail = new_node
+        new_node.print()
 
     # Print the whole tree, in order
     def print(self):
@@ -74,7 +75,7 @@ class Tree:
             print(f"Data: {next_node.data}, Name: {next_node.name}")
             next_node = next_node.book_next
 
-    # Print all lines of a book to file {name}.txt
+    # Write all lines of a book to file {name}.txt
     def write_book_to_file(self, name):
         current = self.name_heads[name]
         file_path = f"{name}.txt"
@@ -83,6 +84,7 @@ class Tree:
                 file.write(str(current.data) + "\n")
                 current = current.book_next
 
+    # Print all lines of a with a particular pattern
     def print_pattern(self):
         next_node = self.pattern_head
 

@@ -42,11 +42,11 @@ def handle_client(client_socket, tree, name, pattern):
 
         else:
             # connection closed
-            print(f"Closing client: {name}")
+            # print(f"Closing client: {name}")
             client_socket.close()
             break
 
-    # Finished reading in data, now can write to file 
+    # Finished reading in data, now can write to file
     tree.write_book_to_file(name)
 
 
@@ -64,8 +64,8 @@ if __name__ == "__main__":
     parser.add_argument("-l", "--listenport", help="port to listen on", type=int)
     parser.add_argument("-p", "--pattern", help="pattern to search for", type=str)
     args = parser.parse_args()
-    print(f"listen: {args.listenport}")
-    print(f"pattern: {args.pattern}")
+    # print(f"listen: {args.listenport}")
+    # print(f"pattern: {args.pattern}")
     port = args.listenport
     pattern = args.pattern
 
@@ -76,10 +76,10 @@ if __name__ == "__main__":
     server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
     server_socket.bind((host, port))
-    print(f"binded to {host}:{port}")
+    # print(f"binded to {host}:{port}")
 
     server_socket.listen(5)
-    print("listening")
+    # print("listening")
 
     # a forever loop until client wants to exit
     while True:
@@ -87,7 +87,7 @@ if __name__ == "__main__":
         client_socket, address = server_socket.accept()
 
         # lock acquired by client
-        print("Connected to :", address[0], ":", address[1])
+        # print("Connected to :", address[0], ":", address[1])
 
         # Start a new thread and return its identifier
         setname = f"book_{connections:02d}"
@@ -104,4 +104,4 @@ if __name__ == "__main__":
         if t is not main_thread:
             t.join()
 
-    tree.print()
+    # tree.print()
