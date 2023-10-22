@@ -63,7 +63,7 @@ if __name__ == "__main__":
 
     connections = 0
 
-    host = ""
+    host = "0.0.0.0"
 
     port = 12345
 
