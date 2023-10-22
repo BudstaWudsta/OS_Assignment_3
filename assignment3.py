@@ -63,18 +63,18 @@ if __name__ == "__main__":
 
     host = ""
 
-    port = 1234
+    port = 12345
 
     # Parse arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument("-l", "--listenport", help="port to listen on", type=int)
+    parser.add_argument("-l", "--listenport", default=12345, help="port to listen on", type=int)
     parser.add_argument("-p", "--pattern", help="pattern to search for", type=str)
     args = parser.parse_args()
     #print(f"listen: {args.listenport}")
     #print(f"pattern: {args.pattern}")
     port = args.listenport
-    pattern = args.pattern
-
+    pattern = args.pattern 
+    
     # Create IPv4 TCP socket
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
