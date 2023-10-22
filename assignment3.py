@@ -81,7 +81,7 @@ if __name__ == "__main__":
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     # Allow instant reconnect (by default, TCP enforces a timeout on reconnect so the socket can't be reused immediately)
-    server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    #server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
     server_socket.bind((host, port))
     #print(f"binded to {host}:{port}")
@@ -104,11 +104,3 @@ if __name__ == "__main__":
             target=handle_client, args=(client_socket, tree, setname, pattern)
         )
         t.start()
-
-    # wait for all threads to finish
-    main_thread = threading.current_thread()
-    for t in threading.enumerate():
-        if t is not main_thread:
-            t.join()
-
-    # tree.print()
