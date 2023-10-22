@@ -1,5 +1,5 @@
+#!/usr/bin/env python3
 from Node import Node
-
 
 class Tree:
     def __init__(self) -> None:
