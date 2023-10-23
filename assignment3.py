@@ -40,7 +40,7 @@ def handle_client(client_socket, tree, name, pattern):
             for d in data:
                 lines.append(d)
 
-            while lines:
+            while len(lines > 0):
                 time.sleep(0.1)
                 with lock:
                     line = lines.pop(0)
