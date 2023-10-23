@@ -13,7 +13,7 @@ class Tree:
     def append(self, data, name, pattern):
         self.depth += 1
         new_node = Node(data, name)
-
+        new_node.print()
         # base case
         if self.head is None:
             self.head = new_node
@@ -54,7 +54,7 @@ class Tree:
 
         self.tail.next = new_node
         self.tail = new_node
-        new_node.print()
+       
 
     # Print the whole tree, in order
     def print(self):
