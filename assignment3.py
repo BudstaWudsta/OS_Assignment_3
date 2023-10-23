@@ -43,13 +43,13 @@ def handle_client(client_socket, tree, name, pattern):
                     lines.append(d)
                 
 
-                print ("CHECKING LINES LOOP")
+                #print ("CHECKING LINES LOOP")
                 while len(lines) > 0:
-                    time.sleep(0.1)
+                    #time.sleep(0.1)
                     with lock:
-                        print(f"lines length: {len(lines)}")
+                        #print(f"lines length: {len(lines)}")
                         line = lines.pop(0)
-                        time.sleep(0.1)
+                        #time.sleep(0.1)
                         tree.append(line, name, pattern)
 
                 created_before = True
