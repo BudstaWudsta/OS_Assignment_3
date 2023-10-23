@@ -44,6 +44,7 @@ def handle_client(client_socket, tree, name, pattern):
                 time.sleep(0.1)
                 with lock:
                     line = lines.pop(0)
+                    print(f"lines length: {len(lines)}")
                     time.sleep(0.1)
                     tree.append(line, name, pattern)
 
