@@ -39,7 +39,9 @@ def handle_client(client_socket, tree, name, pattern):
 
             for d in data:
                 lines.append(d)
+            
 
+            print ("CHECKING LINES LOOP")
             while len(lines) > 0:
                 time.sleep(0.1)
                 with lock:
