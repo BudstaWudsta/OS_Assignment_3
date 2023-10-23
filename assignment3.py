@@ -7,6 +7,7 @@ import threading
 import sys
 import argparse
 from Tree import Tree
+import time
 
 lock = threading.Lock()
 
@@ -28,11 +29,13 @@ def handle_client(client_socket, tree, name, pattern):
         if client_socket in readable:
             # recieving data
             data = client_socket.recv(1024)
-
+            print(f"data: {data}")
             # removing extra charaacters
             data = str(data)
             data = data[2:]
             data = data[:-1]
+
+            time.sleep
 
             # spliting input based on new lines
             data = data.split("\\n")
@@ -41,8 +44,10 @@ def handle_client(client_socket, tree, name, pattern):
                 lines.append(d)
 
             while lines:
+                time.sleep(100)
                 with lock:
                     line = lines.pop(0)
+                    time.sleep(300)
                     tree.append(line, name, pattern)
 
             created_before = True
