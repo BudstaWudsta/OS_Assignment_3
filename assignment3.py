@@ -81,7 +81,7 @@ if __name__ == "__main__":
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     # Allow instant reconnect (by default, TCP enforces a timeout on reconnect so the socket can't be reused immediately)
-    #server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
     server_socket.bind((host, port))
     #print(f"binded to {host}:{port}")
@@ -97,7 +97,7 @@ if __name__ == "__main__":
         #print("Connected to :", address[0], ":", address[1])
 
         # Start a new thread and return its identifier
-        setname = f"book_{connections+1:02d}"
+        setname = "book_{:02d}".format(connections + 1)
         connections += 1
 
         t = threading.Thread(
