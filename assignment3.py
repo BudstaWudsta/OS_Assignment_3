@@ -29,28 +29,29 @@ def handle_client(client_socket, tree, name, pattern):
         if client_socket in readable:
             # recieving data
             data = client_socket.recv(1024)
-            # removing extra charaacters
-            data = str(data)
-            data = data[2:]
-            data = data[:-1]
+            if data != b"":
+                # removing extra charaacters
+                data = str(data)
+                data = data[2:]
+                data = data[:-1]
 
-            # spliting input based on new lines
-            data = data.split("\\n")
+                # spliting input based on new lines
+                data = data.split("\\n")
 
-            for d in data:
-                lines.append(d)
-            
+                for d in data:
+                    lines.append(d)
+                
 
-            print ("CHECKING LINES LOOP")
-            while len(lines) > 0:
-                time.sleep(0.1)
-                with lock:
-                    print(f"lines length: {len(lines)}")
-                    line = lines.pop(0)
+                print ("CHECKING LINES LOOP")
+                while len(lines) > 0:
                     time.sleep(0.1)
-                    tree.append(line, name, pattern)
+                    with lock:
+                        print(f"lines length: {len(lines)}")
+                        line = lines.pop(0)
+                        time.sleep(0.1)
+                        tree.append(line, name, pattern)
 
-            created_before = True
+                created_before = True
 
         else:
             if not created_before:
