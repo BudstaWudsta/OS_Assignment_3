@@ -13,7 +13,7 @@ lock = threading.Lock()
 
 
 def handle_client(client_socket, tree, name, pattern):
-    lines = []
+
     data = ""
     print(f"startinc connection w {name}")
     # Check if there is a file created (in case of blank book)
@@ -30,26 +30,18 @@ def handle_client(client_socket, tree, name, pattern):
 
         if client_socket in readable:
             data = client_socket.recv(1024)
+
+            # if data isnt blank
             if data != b"":
                 # removing extra charaacters
-                data = str(data)
-                data = data[2:]
-                data = data[:-1]
+                data = str(data)[2:-1]
 
                 # spliting input based on new lines
                 data = data.split("\\n")
-
-                for d in data:
-                    lines.append(d)
                 
-
-                #print ("CHECKING LINES LOOP")
-                while len(lines) > 0:
-                    #time.sleep(0.1)
+                while data:
                     with lock:
-                        #print(f"lines length: {len(lines)}")
-                        line = lines.pop(0)
-                        #time.sleep(0.1)
+                        line = data.pop(0)
                         tree.append(line, name, pattern)
 
                 created_before = True
@@ -59,13 +51,11 @@ def handle_client(client_socket, tree, name, pattern):
         if (client_socket not in readable) or blankdata:
             if not created_before:
                 tree.append("", name, pattern)
-
             client_socket.close()
             break
 
     # Finished reading in data, now can write to file
     tree.write_book_to_file(name)
-
 
 if __name__ == "__main__":
     tree = Tree()
@@ -81,8 +71,6 @@ if __name__ == "__main__":
     parser.add_argument("-l", "--listenport", default=12345, help="port to listen on", type=int)
     parser.add_argument("-p", "--pattern", help="pattern to search for", type=str)
     args = parser.parse_args()
-    #print(f"listen: {args.listenport}")
-    #print(f"pattern: {args.pattern}")
     port = args.listenport
     pattern = args.pattern 
     
@@ -93,7 +81,6 @@ if __name__ == "__main__":
     server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
     server_socket.bind((host, port))
-    #print(f"binded to {host}:{port}")
 
     server_socket.listen(5)
 
@@ -102,14 +89,11 @@ if __name__ == "__main__":
         # Blocking function to wait for new connection
         client_socket, address = server_socket.accept()
 
-        # lock acquired by client
-        #print("Connected to :", address[0], ":", address[1])
-
         # Start a new thread and return its identifier
-        setname = "book_{:02d}".format(connections + 1)
+        name = "book_{:02d}".format(connections + 1)
         connections += 1
 
         t = threading.Thread(
-            target=handle_client, args=(client_socket, tree, setname, pattern)
+            target=handle_client, args=(client_socket, tree, name, pattern)
         )
         t.start()
