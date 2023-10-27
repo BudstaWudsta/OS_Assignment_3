@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 class Node:
     def __init__(self, data, name):
         self.data = data  # data held
