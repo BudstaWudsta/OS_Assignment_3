@@ -9,9 +9,6 @@ class Tree:
         self.tail = None
         self.name_heads = {}
         self.depth = 0
-        self.frequency = []
-        self.most_freq_count = 0
-        self.most_freq_name = None
 
     def append_node(self, node):
         self.append(node.data, node.name)
